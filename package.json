@@ -1,0 +1,53 @@
+{
+  "name": "assertion-error-diff",
+  "description": "A small library for creating AssertionError diffs",
+  "repository": "https://github.com/TylorS/assertion-error-diff",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typed/test": "^1.5.0",
+    "@types/node": "^7.0.33",
+    "conventional-changelog-cli": "^1.3.1",
+    "dox": "^0.9.0",
+    "gaze-run-interrupt": "^1.0.1",
+    "glob-expand": "^0.2.1",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
+    "marked": "^0.3.6",
+    "prettier": "^1.5.2",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.1.0",
+    "typescript": "^2.4.1",
+    "validate-commit-message": "^3.0.1"
+  },
+  "dependencies": {},
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "build": "yarn build:commonjs && yarn build:es2015",
+    "build:commonjs": "tsc -P .config/tsconfig.commonjs.json",
+    "build:es2015": "tsc -P .config/tsconfig.es2015.json",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -p angular && git add CHANGELOG.md && git commit -m 'docs(CHANGELOG): amend changelog'",
+    "commitmsg": "validate-commit-msg",
+    "docs": "node .scripts/docs.js",
+    "postversion": "yarn changelog && git push origin master --tags && npm publish",
+    "precommit": "lint-staged",
+    "preversion": "npm test && yarn build",
+    "release:major": "npm version major -m 'chore(package): v%s'",
+    "release:minor": "npm version minor -m 'chore(package): v%s'",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:lint": "prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript 'src/*.ts' 'src/**/*.ts'",
+    "test:unit": "typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
+    "test:watch": "node .scripts/watch.js"
+  }
+}
