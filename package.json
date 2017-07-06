@@ -2,7 +2,7 @@
   "name": "assertion-error-diff",
   "description": "A small library for creating AssertionError diffs",
   "repository": "https://github.com/TylorS/assertion-error-diff",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
