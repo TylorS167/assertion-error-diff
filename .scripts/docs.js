@@ -75,7 +75,7 @@ function generateDocumentation({ tags, description, path }, open = false) {
   const { string: name } = find(propEq('type', 'name'), tags)
   const { string: example } = find(propEq('type', 'example'), tags)
 
-  const fnName = name.split('(')[0].trim()
+  const fnName = name.split('::')[0].trim()
 
   const docs =
     (open ? `<details open>\n` : `<details>\n`) +

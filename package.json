@@ -26,7 +26,11 @@
     "typescript": "^2.4.1",
     "validate-commit-message": "^3.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "167": "^0.30.0",
+    "typed-colors": "^1.0.0",
+    "typed-figures": "^1.0.0"
+  },
   "lint-staged": {
     "*.ts": [
       "prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript",
